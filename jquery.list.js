@@ -173,6 +173,10 @@
             },
 
             'giveAttrs': function ($element) {
+
+                console.log('Give attr');
+
+
                 var return_text = false;
 
                 var key = this.getKey();
@@ -242,7 +246,7 @@
                     });
                 });
 
-                element.find('[data-identifier][data-parent="' + this.getKey() + '"]').each(function () {
+                element.find('[data-identifier]').each(function () {
                     data[$(this).data('identifier')] = this;
                 });
 
