@@ -60,7 +60,7 @@
              * @param  {int} index The index 1-based index of the list item that was clicked
              */
             'delete': function (e, index) {
-                this.delete(index - 1);
+                this['delete'](index - 1);
                 this.render();
             }
         };
