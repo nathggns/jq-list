@@ -206,6 +206,11 @@
                 return $ele.html();
             },
 
+            /**
+             * Give the attributes to the elements we need to hook into
+             * @param  {object|string} $element The element to find children in
+             * @return {object|string}          The element after the attributes have been added
+             */
             'giveAttrs': function ($element) {
                 var return_text = false;
 
@@ -235,6 +240,10 @@
                 return $element;
             },
 
+            /**
+             * Add another item to list
+             * @param  {int} index The index to add the item after
+             */
             'add': function (index) {
                 this.events('before_add');
 
@@ -246,8 +255,12 @@
 
                 this.saveInformation(info);
                 this.events('add', index);
-            },
+            }, 
 
+            /**
+             * Remove an item from the list
+             * @param  {int} index The index of the item to remove
+             */
             'delete': function (index) {
                 this.events('before_delete', index);
 
@@ -258,6 +271,10 @@
                 this.events('delete', index);
             },
 
+            /**
+             * Render the list
+             * @param  {object} vars List of variables to pass to the swig template
+             */
             'render': function (vars) {
 
                 this.events('before_render');
@@ -364,10 +381,18 @@
 
             },
 
+            /**
+             * Get the stored information about the current plugin instance.
+             * @return {object} The info
+             */
             'getInformation': function () {
                 return global_information[this.getKey()];
             },
 
+            /**
+             * Get a key to identify the current instance
+             * @return {int} The instance
+             */
             'getKey': function () {
                 if (!element.data('info-key')) {
                     element.data('info-key', getID());
@@ -376,11 +401,20 @@
                 return element.data('info-key');
             },
 
+            /**
+             * Save information about the current instance
+             * @param  {object} info Information to save
+             */
             'saveInformation': function (info) {
                 this.events('save_info', info);
                 global_information[this.getKey()] = info;
             },
 
+            /**
+             * Get key-value object of the attributes of a DOMElement
+             * @param  {DOMElement} ele The element to fetch attributes from
+             * @return {object}     key-value object of attributes
+             */
             'attrs': function (ele) {
                 ele = ele || element;
                 var attrs = {};
@@ -392,6 +426,10 @@
                 return attrs;
             },
 
+            /**
+             * Run event callbacks
+             * @param {string} event_name The name of the events to run
+             */
             'events': function () {
                 if (arguments.length > 0) {
                     var event_name = arguments[0];
@@ -406,6 +444,11 @@
                 }
             },
 
+            /**
+             * Assign an event handler
+             * @param  {string} event   the event type
+             * @param  {function} handler the handler for the event
+             */
             'on': function (event, handler) {
                 var info = this.getInformation();
 
@@ -416,6 +459,11 @@
                 this.saveInformation(info);
             },
 
+            /**
+             * Remove an event handler
+             * @param  {string} event   the event type
+             * @param  {function} handler the handler for the event
+             */
             'off': function (event, handler) {
                 var info = this.getInformation();
                 if (info.events[event]) {
