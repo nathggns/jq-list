@@ -255,7 +255,7 @@
 
                 this.saveInformation(info);
                 this.events('add', index);
-            }, 
+            },
 
             /**
              * Remove an item from the list
