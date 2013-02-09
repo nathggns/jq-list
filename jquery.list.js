@@ -83,9 +83,9 @@
                         });
                     }
 
-                    var $selector = $(selector);
 
-                    $selector.html(this.giveAttrs($selector.html()));
+                    var $selector = $(selector);
+                    var template_html = this.giveAttrs($selector.html());
 
                     var info = $.extend(true, {}, defaults, {
                         element: element
@@ -120,7 +120,7 @@
                         compiled_templates[name] = run.compileTemplate(template);
                     });
 
-                    var $copy = $('<div/>').html($selector.html());
+                    var $copy = $('<div/>').html(template_html);
                     var $elements;
 
                     var handler = function($elements) {
@@ -137,8 +137,8 @@
                         handler($elements);
                     }
 
-                    $selector.html($copy.html());
-                    info.template = swig.compile($selector.html());
+                    template_html = $copy.html();
+                    info.template = swig.compile(template_html);
                     this.saveInformation(info);
 
                     for (var i = 0, l = info.count; i < info.count; i++) {
