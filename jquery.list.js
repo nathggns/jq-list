@@ -475,6 +475,14 @@
                 }
 
                 this.saveInformation(info);
+            },
+
+            /**
+             * Grab the method runner
+             * @return {object} Method runner.
+             */
+            'methodRunner': function() {
+                return run;
             }
         };
 
