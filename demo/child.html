@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic jQuery List Demo</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+	<script src="http://paularmstrong.github.com/swig/js/swig.pack.min.js"></script>
+	<script src="../jquery.list.js"></script>
+
+	<script>
+	$(function() {
+		$('.people').list('.people-template', {
+			children: {
+				addresses: '.addresses'
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<ul class="people"></ul>
+
+	<script type="text/swig" class="people-template">
+	{% for item in list %}
+		<li>
+			Person {{ loop.index }}: <input type="text" placeholder="Name">
+
+			<ul data-sublist="addresses"></ul>
+
+			<div>
+				<span data-role="add">+</span>
+				{% if showdelete %}<span data-role="delete">-</span>{% endif %}
+			</div>
+		</li>
+	{% endfor %}
+	</script>
+
+	<script type="text/swig" class="addresses">
+	{% for item in list %}
+		<li>
+			Address {{ loop.index }}: <input type="text" placeholder="Address">
+
+			<div>
+				<span data-role="add">+</span>
+				{% if showdelete %}<span data-role="delete">-</span>{% endif %}
+			</div>
+		</li>
+	{% endfor %}
+	</script>
+</body>
+</html>
