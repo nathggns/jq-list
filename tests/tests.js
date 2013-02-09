@@ -10,7 +10,13 @@ test('Test preserving sublist contents', function() {
 	// Type in second input
 	$('input').eq(1).val('Some more text');
 
-	// Add another child to first element
+	// Add other child to the main list
+	$('span[data-role=add]').eq(1).click();
+
+	// Test that the text peristed
+	equal($('input').eq(1).val(), 'Some more text', 'Text peristed with one child');
+
+	//Add another child to first element
 	$('span[data-role=add]').eq(0).click();
 	$('input').eq(2).val('This is some more');
 
@@ -18,7 +24,7 @@ test('Test preserving sublist contents', function() {
 	$('span[data-role=delete]').eq(1).click();
 
 	// Test to see if its gone by making sure the list length it 1
-	equal($('ul.list > li > ul').length, 1, 'Check list length after delete');
+	equal($('ul.list > li > ul').length, 2, 'Check list length after delete');
 
 	// Add another child to first element
 	$('span[data-role=add]').eq(0).click();
