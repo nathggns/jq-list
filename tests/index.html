@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq-list Tests</title>
+	<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css" />
+</head>
+<body>
+
+
+	<script type="text/swig" class="poll-template">
+		{% for item in list %}
+			<li class="clear-group">
+				<input type="text">
+
+				<ul data-sublist="choices"></ul>
+
+				<div data-template="buttons-rtl"></div>
+			</li>
+		{% endfor %}
+	</script>
+
+	<script type="text/swig" class="choice-template">
+
+
+		{% for item in list %}
+			<li class="clear-group">
+
+				<input type="text">
+				<div data-template="buttons-rtl"></div>
+			</li>
+		{% endfor %}
+	</script>
+	    
+	<ul class="list"></ul>
+
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+	<script src="../swig.js"></script>
+	<script src="../list.js"></script>
+
+	<script src="../app.js"></script>
+
+	<script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+
+	<script src="tests.js"></script>
+</body>
+</html>
