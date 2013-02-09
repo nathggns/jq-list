@@ -36,22 +36,41 @@
     })();
 
     /**
-     * [getMethods description]
-     * @param  {[type]} element [description]
-     * @return {[type]}         [description]
+     * Get on object to run methods from
+     * @param  {object} element Element to run the methods on
+     * @return {object} Allows you to run methods
      */
     var getMethods = function (element) {
+
         var roles = {
+
+            /**
+             * Handle clicking the add button, add a list item.
+             * @param  {event} e the event variable from the event.
+             * @param  {int} index The index 1-based index of the list item that was clicked
+             */
             'add': function (e, index) {
                 this.add(index - 1);
                 this.render();
             },
+
+            /**
+             * Handle clicking the delelete button, deletes a list item
+             * @param  {event} e the event variable from the event.
+             * @param  {int} index The index 1-based index of the list item that was clicked
+             */
             'delete': function (e, index) {
                 this.delete(index - 1);
                 this.render();
             }
         };
         var methods = {
+
+            /**
+             * Initiate the plugin.
+             * @param  {string|object} selector The element to run the plugin on
+             * @param  {object} options  Options for the plugin. Defaults to {}
+             */
             'init': function (selector, options) {
                 if (!options) options = {};
 
@@ -143,9 +162,18 @@
                 this.events('init');
             },
 
+            /**
+             * Generate a function to replace template placeholders
+             * @param  {string|object} template The subtemplate
+             * @return {function}
+             */
             'compileTemplate': function (template) {
                 template = this.giveAttrs(template);
 
+                /**
+                 * Replace the $element with the subtemplate
+                 * @param  {object} $element Subtemplate placeholder
+                 */
                 return function ($element) {
                     template = run.runOnString(template, function ($ele) {
                         var $content = $ele.find('[data-content]');
