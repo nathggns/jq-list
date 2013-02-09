@@ -207,10 +207,6 @@
             },
 
             'giveAttrs': function ($element) {
-
-                console.log('Give attr');
-
-
                 var return_text = false;
 
                 var key = this.getKey();
