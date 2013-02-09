@@ -331,7 +331,7 @@
 
                         $this.list('saveInformation', info).list('render');
 
-                        if (rows[row_name].length > 1) {
+                        if (rows[row_name].length > 0) {
                             info = $this.list('getInformation');
                             info.rows = rows[row_name];
                             $this.list('saveInformation', info).list('render');
