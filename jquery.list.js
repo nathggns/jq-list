@@ -12,16 +12,34 @@
         templates: {}
     };
     var compiled_templates = {};
+
+    /**
+     * This function generates a random number, if this number has been generated before
+     * it will generate another.
+     * @param  {int} length The 'length' is the number of digits in the number, defaults to 10
+     * @return {int} Random number
+     */
     var getID = (function (length) {
         var IDs = [undefined];
 
         return function () {
-            for (var id = undefined; IDs.indexOf(id) > -1; id = Math.floor(Math.random() * Math.pow(10, length || 10)));
+            for (
+                var id;
+                IDs.indexOf(id) > -1;
+                id = Math.floor(
+                    Math.random() * Math.pow(10, length || 10)
+                )
+            );
 
             return id;
-        }
+        };
     })();
 
+    /**
+     * [getMethods description]
+     * @param  {[type]} element [description]
+     * @return {[type]}         [description]
+     */
     var getMethods = function (element) {
         var roles = {
             'add': function (e, index) {
@@ -43,7 +61,7 @@
                             if (typeof events === 'function') {
                                 options.events[index] = [events];
                             }
-                        })
+                        });
                     }
 
                     var $selector = $(selector);
@@ -64,7 +82,7 @@
                             if (typeof child === 'string') {
                                 child = {
                                     selector: child
-                                }
+                                };
                             }
 
                             if (!child.name) child.name = name;
@@ -122,7 +140,7 @@
             },
 
             'compileTemplate': function (template) {
-                var template = this.giveAttrs(template);;
+                template = this.giveAttrs(template);
 
                 return function ($element) {
                     template = run.runOnString(template, function ($ele) {
@@ -138,7 +156,7 @@
 
                     $element.after(template);
                     $element.remove();
-                }
+                };
             },
 
             'runOnString': function (string, callback) {
@@ -248,7 +266,7 @@
                         e.preventDefault();
                         roles[role].call(run, e, $this.data('index'));
                     }
-                })
+                });
 
                 $.each(children, function (index, child) {
 
@@ -272,7 +290,7 @@
                         $this.list('saveInformation', info).list('render');
 
                         if (rows[row_name].length > 1) {
-                            var info = $this.list('getInformation');
+                            info = $this.list('getInformation');
                             info.rows = rows[row_name];
                             $this.list('saveInformation', info).list('render');
                         }
@@ -388,8 +406,8 @@
                 var args = arguments;
 
                 return run.apply(run, args);
-            }
-        })
+            };
+        });
 
         return run;
     };
@@ -399,7 +417,7 @@
 
         if (arguments.length < 1) {
             Array.prototype.push.call(arguments, 'init');
-        };
+        }
 
         var method = Array.prototype.splice.call(arguments, 0, 1)[0];
 
@@ -415,14 +433,14 @@
             }
 
             if (arguments.length < 1) {
-                selector = '[type="text/swig"]'
+                selector = '[type="text/swig"]';
             } else {
                 selector = arguments[0];
                 Array.prototype.splice.call(arguments, 0, 1);
             }
 
             Array.prototype.unshift.call(arguments, selector);
-        };
+        }
 
         var result = getMethods(this)[method].apply(this, arguments);
 
