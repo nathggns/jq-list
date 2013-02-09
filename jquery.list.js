@@ -104,7 +104,7 @@
                     var $copy = $('<div/>').html($selector.html());
                     var $elements;
 
-                    while (($elements = $copy.find('[data-template]')).length > 0) {
+                    var handler = function($elements) {
                         $elements.each(function () {
                             var $this = $(this);
                             var name = $this.data('template');
@@ -112,6 +112,10 @@
 
                             template($this);
                         });
+                    };
+
+                    while (($elements = $copy.find('[data-template]')).length > 0) {
+                        handler($elements);
                     }
 
                     $selector.html($copy.html());
