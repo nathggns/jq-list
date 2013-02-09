@@ -191,6 +191,12 @@
                 };
             },
 
+            /**
+             * Run a callback on a string as if it were an element
+             * @param  {string|object}   string   The string to run the callback on
+             * @param  {function} callback  the callback to run
+             * @return {string]}            The result of the callback
+             */
             'runOnString': function (string, callback) {
                 if (typeof string !== 'string') string = string.html();
                 var $ele = $('<div/>').html(string);
