@@ -50,6 +50,37 @@ var tests = {
 		$('ul.list > li > div span[data-role=add]').click();
 
 		equal($('input').eq(2).val(), 'This is some more', 'Check value after add');
+	},
+	
+	
+	'test adding': function($element) {
+		// Because references don't last :/
+		var button = (function() { return $element.find('> li:first-of-type > div [data-role=add]'); });
+		var input = (function() { return $element.find('input:eq(0)'); });
+		var last_input = (function() { return $element.find('> li:last-of-type [data-identifier]:eq(0)'); });
+		var sub_button = (function() { return $element.find('> li:first-of-type > ul > li:first-of-type > div [data-role=add]'); });
+
+		// Basic adding
+		button().click();
+		equal($element.children('li').length, 2, 'Basic add passed');
+
+		// Adding at index
+		var id = last_input().data('data-identifier');
+		button().click();
+		equal($element.children('li').length, 3, 'Clicking on add that isn\'t last works');
+		equal(last_input().data('data-identifier'), id, 'Can add at index');
+
+		// Adding with data
+		var rand = Math.floor(Math.random() * 10000);
+		input().val(rand);
+		button().click();
+		equal($element.children('li').length, 4, 'Clicking on add that isn\'t last works with data');
+		equal(last_input().data('data-identifier'), id, 'Can add at index with data');
+		equal(input().val(), rand, 'Data persists');
+
+		// Adding in a sublist
+		sub_button().click();
+		equal($element.find('> li:first-of-type > ul').children().length, 2);
 	}
 };
 
@@ -57,7 +88,9 @@ $.each(tests, function(name, test_func) {
 
 	test(name, function() {
 		runList();
+		Array.prototype.unshift.call(arguments, $element);
 		test_func.apply(this, arguments);
+		
 		$element.list('reset');
 	});
 });
