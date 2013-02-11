@@ -9,7 +9,12 @@
         children: [],
         events: {},
         count: 1,
-        templates: {}
+        templates: {},
+        original: {
+            html: '',
+            attrs: {},
+            data: {}
+        }
     };
     var compiled_templates = {};
 
@@ -74,7 +79,14 @@
             'init': function (selector, options) {
                 if (!options) options = {};
 
-                if (!this.getInformation()) {
+                if (!element.data('ran')) {
+
+                    var original = {
+                        html: element.html(),
+                        attrs: $.extend(true, {}, this.attrs(element.get(0))),
+                        data: $.extend(true, {}, element.data())
+                    };
+
                     if (options.events) {
                         $.each(options.events, function (index, events) {
                             if (typeof events === 'function') {
@@ -88,7 +100,8 @@
                     var template_html = this.giveAttrs($selector.html());
 
                     var info = $.extend(true, {}, defaults, {
-                        element: element
+                        element: element,
+                        original: original
                     }, options || {});
 
                     this.saveInformation(info);
@@ -147,6 +160,7 @@
                 }
 
                 this.render();
+                element.data('ran', true);
                 this.events('init');
             },
 
@@ -471,6 +485,45 @@
              */
             'methodRunner': function() {
                 return run;
+            },
+
+            /**
+             * Completely reset this instance of the list plugin
+             */
+            'reset': function() {
+                // Get our info and key, as we can't get it later
+                var key = this.getKey();
+                var info = this.getInformation();
+
+                // Remove the entry in our registry
+                delete global_information[key];
+
+                // Remove all data first
+                $.each(element.data(), function(name) {
+                    element.removeData(name);
+                });
+
+                // Re-assign original data
+                $.each(info.original.data, function(name, val) {
+                    element.data(name, val);
+                });
+
+                // Remove all attributes first
+                $.each(this.attrs(element[0]), function(name) {
+                    if (name !== 'type') {
+                        element.removeAttr(name);
+                    }
+                });
+
+                // Re-assign original attributes
+                $.each(info.original.attrs, function(name, val) {
+                    if (name !== 'type') {
+                        element.attr(name, val);
+                    }
+                });
+
+                // Reset the html
+                element.html(info.original.html);
             }
         };
 
@@ -518,8 +571,6 @@
         var args = arr[1];
 
         if (!this.data('ran')) {
-
-            this.data('ran', true);
 
             var selector;
 
