@@ -13,7 +13,7 @@ jQuery List is a cool program that allows you to create lists using Swig templat
 
  - [jQuery](http://jquery.com) 1.7+
  - [Swig](https://github.com/paularmstrong/swig) 0.13.5+
- - [QUnit](http://qunitjs.com/) (Optinal, required for tests)
+ - [QUnit](http://qunitjs.com/) (Optional, required for tests)
 
 ## Demos
 
