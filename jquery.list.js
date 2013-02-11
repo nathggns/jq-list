@@ -144,18 +144,6 @@
                     for (var i = 0, l = info.count; i < info.count; i++) {
                         this.add(i);
                     }
-
-                    var key = this.getKey();
-
-                    // element.on('click', '[data-role]', function(e) {
-                    //     var $this = $(this),
-                    //         role = $this.data('role');
-
-                    //     if (roles[role] && $this.data('parent') === key) {
-                    //         e.preventDefault();
-                    //         roles[role].call(run, e, $this.data('index'));
-                    //     }
-                    // });
                 }
 
                 this.render();
