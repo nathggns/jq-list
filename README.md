@@ -19,7 +19,7 @@ Older versions for these dependcies may work but are not officially supported.
 
 ## Demos
 
-Check the demos folder for some examples.
+Check the demos folder for some examples. **Note:** Not all functionality is covered by the demos. More demos are currently under development. 
 
 ## Docs
 
