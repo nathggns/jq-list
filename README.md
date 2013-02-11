@@ -1,6 +1,6 @@
 # jQuery List
 
-jQuery List is a cool program that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.
+jQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.
 
 ## Features
 
@@ -14,6 +14,8 @@ jQuery List is a cool program that allows you to create lists using Swig templat
  - [jQuery](http://jquery.com) 1.7+
  - [Swig](https://github.com/paularmstrong/swig) 0.13.5+
  - [QUnit](http://qunitjs.com/) (Optional, required for tests)
+
+Older versions for these dependcies may work but are not officially supported. 
 
 ## Demos
 
