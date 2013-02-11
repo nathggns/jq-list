@@ -509,6 +509,8 @@
         return [method, arguments];
     };
 
+    $.list = getMethods(false);
+
     $.fn.list = function () {
 
         var arr = getMethod.apply(this, arguments);
