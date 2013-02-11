@@ -494,14 +494,26 @@
         return run;
     };
 
-    $.fn.list = function () {
-
-
+    /**
+     * Get the method from the arguments variable
+     *
+     * Usage: getMethod.apply(this, arguments);
+     */
+    var getMethod = function() {
         if (arguments.length < 1) {
             Array.prototype.push.call(arguments, 'init');
         }
 
         var method = Array.prototype.splice.call(arguments, 0, 1)[0];
+
+        return [method, arguments];
+    };
+
+    $.fn.list = function () {
+
+        var arr = getMethod.apply(this, arguments);
+        var method = arr[0];
+        var args = arr[1];
 
         if (!this.data('ran')) {
 
@@ -510,21 +522,21 @@
             var selector;
 
             if (method !== 'init') {
-                Array.prototype.unshift.call(arguments, method);
+                Array.prototype.unshift.call(args, method);
                 method = 'init';
             }
 
-            if (arguments.length < 1) {
+            if (args.length < 1) {
                 selector = '[type="text/swig"]';
             } else {
-                selector = arguments[0];
-                Array.prototype.splice.call(arguments, 0, 1);
+                selector = args[0];
+                Array.prototype.splice.call(args, 0, 1);
             }
 
-            Array.prototype.unshift.call(arguments, selector);
+            Array.prototype.unshift.call(args, selector);
         }
 
-        var result = getMethods(this)[method].apply(this, arguments);
+        var result = getMethods(this)[method].apply(this, args);
 
         if (result) {
             return result;
