@@ -9,20 +9,48 @@ jQuery List is a jQuery plugin that allows you to create lists using Swig templa
  - Child templates
  - Covered by tests
 
-## Dependencies
+## Getting Started
 
- - [jQuery](http://jquery.com) 1.7+
- - [Swig](https://github.com/paularmstrong/swig) 0.13.5+
- - [QUnit](http://qunitjs.com/) (Optional, required for tests)
+Download the [production version][min] or the [development version][max].
 
-Older versions for these dependcies may work but are not officially supported. 
+[min]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.min.js
+[max]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.js
 
-## Demos
+In your web page:
+
+```html
+<script src="jquery.js"></script>
+<script src="swig.js"></script>
+<script src="dist/jq-list.min.js"></script>
+<script>
+jQuery(function($) {
+  $('#container').list('#template');
+});
+</script>
+<script type="text/swig" id="template">
+{% for item in list %}
+	<li>
+		Item #{{ loop.index }}
+		<div data-role="add">+</div>
+		<div data-role="delete">-</div>
+	</li>
+{% endfor %}
+</script>
+<ul id="container"></ul>
+```
+
+## Examples
 
 Check the demos folder for some examples.
 
 **Note:** Not all functionality is covered by the demos. More demos are currently under development. 
 
-## Docs
+## Contribute
+
+    npm install jq-list
+
+Before commiting, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.
+
+## Documentation
 
 Official docs have not yet been created, but some insight may be gained from [JSDoc](http://usejsdoc.org/).

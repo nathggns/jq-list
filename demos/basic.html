@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic jQuery List Demo</title>
+
+	<script src="../libs/jquery-loader.js"></script>
+	<script src="../libs/swig/swig.js"></script>
+	<script src="../src/jq-list.js"></script>
+
+	<script>
+	$(function() {
+		$('.list').list('.template');
+	});
+	</script>
+</head>
+<body>
+	<ul class="list"></ul>
+
+	<script type="text/swig" class="template">
+	{% for item in list %}
+		<li>Item {{ loop.index }} <span data-role="add">+</span> {% if showdelete %}<span data-role="delete">-</span>{% endif %}</li>
+	{% endfor %}
+	</script>
+</body>
+</html>
