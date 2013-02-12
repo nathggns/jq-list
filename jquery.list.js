@@ -1,3 +1,9 @@
+/**
+ * jQuery List - http://github.com/nathggns/jq-list
+ *
+ * @author Nathaniel Higgins [@nathggns]
+ * @author James Hall [@MrRio]
+ */
 (function (window, document, $, undefined) {
 
     var global_information = {};
