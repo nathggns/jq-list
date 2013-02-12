@@ -6,6 +6,7 @@
         rows: [],
         element: null,
         template: function () {},
+        template_html: '',
         children: [],
         events: {},
         count: 1,
@@ -95,10 +96,6 @@
                         });
                     }
 
-
-                    var $selector = $(selector);
-                    var template_html = this.giveAttrs($selector.html());
-
                     var info = $.extend(true, {}, defaults, {
                         element: element,
                         original: original
@@ -133,26 +130,7 @@
                         compiled_templates[name] = run.compileTemplate(template);
                     });
 
-                    var $copy = $('<div/>').html(template_html);
-                    var $elements;
-
-                    var handler = function($elements) {
-                        $elements.each(function () {
-                            var $this = $(this);
-                            var name = $this.data('template');
-                            var template = compiled_templates[name];
-
-                            template($this);
-                        });
-                    };
-
-                    while (($elements = $copy.find('[data-template]')).length > 0) {
-                        handler($elements);
-                    }
-
-                    template_html = $copy.html();
-                    info.template = swig.compile(template_html);
-                    this.saveInformation(info);
+                    this.setTemplate($(selector));
 
                     for (var i = 0, l = info.count; i < info.count; i++) {
                         this.add(i);
@@ -524,6 +502,55 @@
 
                 // Reset the html
                 element.html(info.original.html);
+            },
+
+            /**
+             * Get the template
+             *
+             * @param {bool} return_func Return the template function.
+             * @return {string|function} template string or function, depending on return_func
+             */
+            'getTemplate': function(return_func) {
+                var info = this.getInformation();
+
+                return typeof return_func === 'undefined' ? info.template_html : info.template;
+            },
+
+            /**
+             * Set a template, pass either an element or a string...
+             *
+             * @param {string|object} Template to set
+             */
+            'setTemplate': function(string) {
+                if (typeof string !== 'string') {
+                    string = string.html();
+                }
+
+                string = this.giveAttrs(string);
+
+                var $copy = $('<div/>').html(string);
+                var $elements;
+
+                var handler = function($elements) {
+                    $elements.each(function () {
+                        var $this = $(this);
+                        var name = $this.data('template');
+                        var template = compiled_templates[name];
+
+                        template($this);
+                    });
+                };
+
+                while (($elements = $copy.find('[data-template]')).length > 0) {
+                    handler($elements);
+                }
+
+                string = $copy.html();
+
+                var info = this.getInformation();
+                info.template_html = string;
+                info.template = swig.compile(string);
+                this.saveInformation(info);
             }
         };
 

@@ -1,19 +1,3 @@
-var $element = $('.list');
-
-test('Reset', function() {
-	var data = $.extend(true, {}, $element.data());
-	var attrs = $.extend(true, {}, $.list('attrs', $element[0]));
-	var html = $element.html();
-
-	runList();
-
-	$element.list('reset');
-
-	equal(JSON.stringify($element.data()), JSON.stringify(data), 'Data was fixed');
-	equal(JSON.stringify($.list('attrs', $element[0])), JSON.stringify(attrs), 'Attributes were fixed');
-	equal($element.html(), html, 'HTML was fixed');
-});
-
 var tests = {
 	'Test preserving sublist contents': function() {
 		// Type in first input
@@ -81,16 +65,70 @@ var tests = {
 		// Adding in a sublist
 		sub_button().click();
 		equal($element.find('> li:first-of-type > ul').children().length, 2);
+	},
+
+	'test modifying template': function($element) {
+		var run = $element.list('methodRunner');
+		var get_random = function() { return 'abc-' + Math.floor(Math.random() * 100000); };
+		var $new;
+		var random;
+		var current;
+
+		current = run.getTemplate();
+		random = get_random();
+		run.setTemplate('<input type=\'text\' id="' + random + '">');
+		run.render();
+
+		$new = $element.find('#' + random);
+
+		notEqual(run.getTemplate(), current, 'Template changed');
+		equal($new.length, 1, 'Setting to string works');
+		ok($new.is('[data-identifier]'), 'identifier attribute added');
+		ok($new.is('[data-parent]'), 'parent attribute added');
+		ok($new.is('[data-index]'), 'index attribute added');
+
+
+		current = run.getTemplate();
+		random = get_random();
+		run.setTemplate($('<div/>').append($('<input/>').attr('type', 'text').attr('id', random)));
+		run.render();
+
+		$new = $element.find('#' + random);
+
+		notEqual(run.getTemplate(), current, 'Template changed when using element');
+		equal($new.length, 1, 'Setting to element works');
+		ok($new.is('[data-identifier]'), 'identifier attribute added when using element');
+		ok($new.is('[data-parent]'), 'parent attribute added when using element');
+		ok($new.is('[data-index]'), 'index attribute added when using element');
 	}
 };
 
-$.each(tests, function(name, test_func) {
+$(function() {
 
-	test(name, function() {
+	var $element = $('.list');
+
+	test('Reset', function() {
+		var data = $.extend(true, {}, $element.data());
+		var attrs = $.extend(true, {}, $.list('attrs', $element[0]));
+		var html = $element.html();
+
 		runList();
-		Array.prototype.unshift.call(arguments, $element);
-		test_func.apply(this, arguments);
-		
+
 		$element.list('reset');
+
+		equal(JSON.stringify($element.data()), JSON.stringify(data), 'Data was fixed');
+		equal(JSON.stringify($.list('attrs', $element[0])), JSON.stringify(attrs), 'Attributes were fixed');
+		equal($element.html(), html, 'HTML was fixed');
+	});
+
+	$.each(tests, function(name, test_func) {
+
+		test(name, function() {
+			runList();
+			Array.prototype.unshift.call(arguments, $element);
+			test_func.apply(this, arguments);
+			
+			$element.list('reset');
+		});
 	});
 });
