@@ -47,9 +47,7 @@ Check the demos folder for some examples.
 
 ## Contribute
 
-    npm install jq-list
-
-Before commiting, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.
+To contribute, first fork this repo. Before commiting your changes, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.
 
 [More Info](CONTRIBUTING.md)
 
