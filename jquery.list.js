@@ -4,7 +4,9 @@
  * @author Nathaniel Higgins [@nathggns]
  * @author James Hall [@MrRio]
  */
-(function (window, document, $, undefined) {
+(function (window, document, $, swig, undefined) {
+
+    'use strict';
 
     var global_information = {};
     var default_row = {};
@@ -234,7 +236,7 @@
                 this.events('before_add');
 
                 var info = this.getInformation();
-                var row = jQuery.extend(true, {}, default_row);
+                var row = $.extend(true, {}, default_row);
 
                 row.identifier = this.getKey() + '-' + getID();
                 info.rows.splice(index + 1, 0, row);
@@ -631,4 +633,4 @@
         }
     };
 
-})(window, document, jQuery);
+})(window, document, jQuery, swig);
