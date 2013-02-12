@@ -10,24 +10,24 @@
 9 silly lockFile 3a52ce78- .
 10 verbose lock . /Users/nathanielh/.npm/3a52ce78-.lock
 11 verbose read json package.json
-12 verbose tar pack [ '/Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz',
+12 verbose tar pack [ '/Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz',
 12 verbose tar pack   '.' ]
-13 verbose tarball /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
+13 verbose tarball /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
 14 verbose folder .
 15 info prepublish jquery-plugin@0.1.0
 16 silly lockFile 3a52ce78- .
 17 verbose lock . /Users/nathanielh/.npm/3a52ce78-.lock
-18 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-19 verbose lock /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz /Users/nathanielh/.npm/c11c4f99-91509-0-4130208198912442-tmp-tgz.lock
+18 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+19 verbose lock /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz /Users/nathanielh/.npm/6791e8f9-4936-0-09712288761511445-tmp-tgz.lock
 20 silly lockFile 3a52ce78- .
 21 silly lockFile 3a52ce78- .
-22 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-23 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-24 verbose tar unpack /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-25 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-26 verbose lock /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package /Users/nathanielh/.npm/e053e35a-91509-0-4130208198912442-package.lock
-27 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-28 verbose lock /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz /Users/nathanielh/.npm/c11c4f99-91509-0-4130208198912442-tmp-tgz.lock
+22 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+23 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+24 verbose tar unpack /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+25 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+26 verbose lock /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package /Users/nathanielh/.npm/8d836b30-4936-0-09712288761511445-package.lock
+27 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+28 verbose lock /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz /Users/nathanielh/.npm/6791e8f9-4936-0-09712288761511445-tmp-tgz.lock
 29 silly gunzTarPerm modes [ '755', '644' ]
 30 silly gunzTarPerm extractEntry package.json
 31 silly gunzTarPerm extractEntry .npmignore
@@ -48,22 +48,22 @@
 46 silly gunzTarPerm extractEntry libs/qunit/qunit.js
 47 silly gunzTarPerm extractEntry libs/qunit/qunit.css
 48 silly gunzTarPerm extractEntry libs/swig/swig.js
-49 verbose read json /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package/package.json
-50 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-51 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-52 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-53 silly lockFile c11c4f99-91509-0-4130208198912442-tmp-tgz /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/tmp.tgz
-54 verbose from cache /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package/package.json
+49 verbose read json /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package/package.json
+50 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+51 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+52 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+53 silly lockFile 6791e8f9-4936-0-09712288761511445-tmp-tgz /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/tmp.tgz
+54 verbose from cache /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package/package.json
 55 verbose tar pack [ '/Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz',
-55 verbose tar pack   '/Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package' ]
+55 verbose tar pack   '/Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package' ]
 56 verbose tarball /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
-57 verbose folder /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-58 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-59 verbose lock /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package /Users/nathanielh/.npm/e053e35a-91509-0-4130208198912442-package.lock
+57 verbose folder /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+58 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+59 verbose lock /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package /Users/nathanielh/.npm/8d836b30-4936-0-09712288761511445-package.lock
 60 silly lockFile 825b4302--jquery-plugin-0-1-0-package-tgz /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
 61 verbose lock /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz /Users/nathanielh/.npm/825b4302--jquery-plugin-0-1-0-package-tgz.lock
-62 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
-63 silly lockFile e053e35a-91509-0-4130208198912442-package /Users/nathanielh/tmp/npm-6791/1360703891509-0.4130208198912442/package
+62 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
+63 silly lockFile 8d836b30-4936-0-09712288761511445-package /Users/nathanielh/tmp/npm-6829/1360704234936-0.09712288761511445/package
 64 silly lockFile 825b4302--jquery-plugin-0-1-0-package-tgz /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
 65 silly lockFile 825b4302--jquery-plugin-0-1-0-package-tgz /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
 66 silly lockFile 4778c208--npm-jquery-plugin-0-1-0-package /Users/nathanielh/.npm/jquery-plugin/0.1.0/package
@@ -102,8 +102,8 @@
 99 silly lockFile 825b4302--jquery-plugin-0-1-0-package-tgz /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
 100 silly shasum updated bytes 40960
 101 silly shasum updated bytes 40960
-102 silly shasum updated bytes 33972
-103 info shasum 9ba029b41ba6e7f0d0e9c0b69eed048bc4973178
+102 silly shasum updated bytes 33987
+103 info shasum 924b4e823bd864347335a1eada21de104548c2d9
 103 info shasum /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz
 104 verbose from cache /Users/nathanielh/.npm/jquery-plugin/0.1.0/package/package.json
 105 verbose chmod /Users/nathanielh/.npm/jquery-plugin/0.1.0/package.tgz 644
@@ -114,29 +114,29 @@
 108 silly publish   engines: { node: '>= 0.6.0' },
 108 silly publish   scripts: { test: 'grunt qunit' },
 108 silly publish   devDependencies: { grunt: '~0.3.17' },
-108 silly publish   readme: '# jQuery List\n\njQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.\n\n## Features\n\n - Access to internal methods - Making it infinitely configurable.\n - Child lists - Lists within lists\n - Child templates\n - Covered by tests\n\n## Getting Started\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.min.js\n[max]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.js\n\nIn your web page:\n\n```html\n<script src="jquery.js"></script>\n<script src="swig.js"></script>\n<script src="dist/jq-list.min.js"></script>\n<script>\njQuery(function($) {\n  $(\'#container\').list(\'#template\');\n});\n</script>\n<script type="text/swig" id="template">\n{% for item in list %}\n\t<li>\n\t\tItem #{{ loop.index }}\n\t\t<div data-role="add">+</div>\n\t\t<div data-role="delete">-</div>\n\t</li>\n{% endfor %}\n</script>\n<ul id="container"></ul>\n```\n\n## Examples\n\nCheck the demos folder for some examples.\n\n**Note:** Not all functionality is covered by the demos. More demos are currently under development. \n\n## Contribute\n\n    npm install jq-list\n\nBefore commiting, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.\n\n## Documentation\n\nOfficial docs have not yet been created, but some insight may be gained from [JSDoc](http://usejsdoc.org/).',
+108 silly publish   readme: '# jQuery List\n\njQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.\n\n## Features\n\n - Access to internal methods - Making it infinitely configurable.\n - Child lists - Lists within lists\n - Child templates\n - Covered by tests\n\n## Getting Started\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.min.js\n[max]: https://raw.github.com/nathggns/jq-list/master/dist/jq-list.js\n\nIn your web page:\n\n```html\n<script src="jquery.js"></script>\n<script src="swig.js"></script>\n<script src="dist/jq-list.min.js"></script>\n<script>\njQuery(function($) {\n  $(\'#container\').list(\'#template\');\n});\n</script>\n<script type="text/swig" id="template">\n{% for item in list %}\n\t<li>\n\t\tItem #{{ loop.index }}\n\t\t<div data-role="add">+</div>\n\t\t<div data-role="delete">-</div>\n\t</li>\n{% endfor %}\n</script>\n<ul id="container"></ul>\n```\n\n## Examples\n\nCheck the demos folder for some examples.\n\n**Note:** Not all functionality is covered by the demos. More demos are currently under development. \n\n## Contribute\n\n    npm install jq-list\n\nBefore commiting, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.\n\n[More Info](CONTRIBUTING.md)\n\n## Documentation\n\nOfficial docs have not yet been created, but some insight may be gained from [JSDoc](http://usejsdoc.org/).',
 108 silly publish   readmeFilename: 'README.md',
 108 silly publish   _id: 'jquery-plugin@0.1.0',
 108 silly publish   description: 'jQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.',
-108 silly publish   dist: { shasum: '9ba029b41ba6e7f0d0e9c0b69eed048bc4973178' },
+108 silly publish   dist: { shasum: '924b4e823bd864347335a1eada21de104548c2d9' },
 108 silly publish   _from: '.' }
 109 verbose url raw jquery-plugin
 110 verbose url resolving [ 'https://registry.npmjs.org/', './jquery-plugin' ]
 111 verbose url resolved https://registry.npmjs.org/jquery-plugin
-112 info trying registry request attempt 1 at 21:18:23
+112 info trying registry request attempt 1 at 21:24:06
 113 http PUT https://registry.npmjs.org/jquery-plugin
 114 http 409 https://registry.npmjs.org/jquery-plugin
 115 verbose url raw jquery-plugin
 116 verbose url resolving [ 'https://registry.npmjs.org/', './jquery-plugin' ]
 117 verbose url resolved https://registry.npmjs.org/jquery-plugin
-118 info trying registry request attempt 1 at 21:18:24
+118 info trying registry request attempt 1 at 21:24:07
 119 http GET https://registry.npmjs.org/jquery-plugin
 120 http 200 https://registry.npmjs.org/jquery-plugin
 121 verbose url raw jquery-plugin/0.1.0/-tag/latest
 122 verbose url resolving [ 'https://registry.npmjs.org/',
 122 verbose url resolving   './jquery-plugin/0.1.0/-tag/latest' ]
 123 verbose url resolved https://registry.npmjs.org/jquery-plugin/0.1.0/-tag/latest
-124 info trying registry request attempt 1 at 21:18:25
+124 info trying registry request attempt 1 at 21:24:08
 125 http PUT https://registry.npmjs.org/jquery-plugin/0.1.0/-tag/latest
 126 http 403 https://registry.npmjs.org/jquery-plugin/0.1.0/-tag/latest
 127 error publish Error sending version data
@@ -144,7 +144,7 @@
 128 error Changed: description "The best jQuery plugin ever." -> "jQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable."
 128 error Added: dist-tags.latest
 128 error Added: versions.0.1.0
-128 error Changed: time.modified "2012-11-20T16:39:15.468Z" -> "2013-02-12T21:16:30.272Z"
+128 error Changed: time.modified "2012-11-20T16:39:15.468Z" -> "2013-02-12T21:22:13.623Z"
 128 error Added: time.0.1.0: jquery-plugin/0.1.0/-tag/latest
 128 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
 128 error     at Request.init.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/main.js:120:22)
