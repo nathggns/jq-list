@@ -4,7 +4,7 @@ jQuery List is a jQuery plugin that allows you to create lists using Swig templa
 
 ## Features
 
- - Access to internal methods - Making it infitely configurable.
+ - Access to internal methods - Making it infinitely configurable.
  - Child lists - Lists within lists
  - Child templates
  - Covered by tests
