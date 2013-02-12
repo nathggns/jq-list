@@ -51,6 +51,8 @@ Check the demos folder for some examples.
 
 Before commiting, make sure you run `grunt`. This will lint, minify and test your changes. Pull requests that do not do this will be rejected.
 
+[More Info](CONTRIBUTING.md)
+
 ## Documentation
 
 Official docs have not yet been created, but some insight may be gained from [JSDoc](http://usejsdoc.org/).
