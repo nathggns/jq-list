@@ -1,4 +1,4 @@
-/*! jQuery List - v0.1.0.1 - 2013-02-12
+/*! jQuery List - v0.1.1 - 2013-02-12
 * https://github.com/nathggns/jq-list
 * Copyright (c) 2013 Nathaniel Higgins; Licensed MIT */
 
