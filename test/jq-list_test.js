@@ -120,6 +120,10 @@
       ok($new.is('[data-index]'), 'index attribute added when using element');
     },
 
+    'sublists have a parent identifier': function($element) {
+      ok($element.find('[data-sublist]').is('[data-parent-identifier]'));
+    },
+
     'test deleting items with children': function($element) {
       var run = $element.list('methodRunner');
       var first = Math.floor(Math.random() * 10000);
