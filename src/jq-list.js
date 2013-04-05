@@ -274,15 +274,11 @@
        * @param  {object} vars List of variables to pass to the swig template
        */
       'render': function (vars) {
-
         this.events('before_render');
 
         var info = this.getInformation();
         var children = info.children;
-
         var rows = {};
-
-
         var data = {};
 
         $.each(children, function (index, child) {
@@ -305,9 +301,7 @@
 
         this.events('render_before_fix');
 
-
         element.find('[data-role]').on('click', function (e) {
-
           var $this = $(this);
           var role = $this.data('role');
 
@@ -324,9 +318,7 @@
         });
 
         $.each(children, function (index, child) {
-
           element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-
             var row_name = child.name + '-' + index;
 
             if (!rows[row_name]) {
@@ -351,21 +343,14 @@
               info.rows = rows[row_name];
               $this.list('saveInformation', info).list('render');
             }
-
-
-
           });
         });
 
         $.each(data, function (identifier, ele) {
           var $new = element.find('[data-identifier="' + identifier + '"]');
-
           var $ele = $(ele);
 
-
           if ($new.length > 0) {
-
-
             $.each(run.attrs($new[0]), function (name, attr) {
               if (name !== 'type') {
                 $ele.attr(name, attr);
@@ -374,13 +359,10 @@
 
             $ele.insertAfter($new);
             $new.remove();
-
           }
-
         });
 
         this.events('render');
-
       },
 
       /**
