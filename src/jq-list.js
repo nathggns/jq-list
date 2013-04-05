@@ -301,7 +301,9 @@
 
             var row_id = identifiers.indexOf($sublist.data('parent-identifier'));
 
-            if (row_id === -1) return;
+            if (row_id === -1) {
+              return;
+            }
 
             real_rows[row_id].child = {
               rows: $sublist.list('getInformation').rows,
