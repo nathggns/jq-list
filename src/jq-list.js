@@ -291,7 +291,6 @@
           var $sublists = element.find('[data-sublist="' + child.name + '"]');
 
           $sublists.each(function () {
-
             var $sublist = $(this);
             var new_list = false;
 
@@ -347,7 +346,17 @@
           });
 
           $sublists.each(function() {
-            $(this).list(child.element, child.options);
+
+            var $sublist = $(this);
+
+            $sublist.list(child.element, child.options);
+            var info = $sublist.list('getInformation');
+            info.render_options = {
+              owner: {
+                index: $sublist.data('index')
+              }
+            };
+            $sublist.list('saveInformation', info).list('render');
           });
         });
 
