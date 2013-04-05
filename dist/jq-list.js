@@ -1,4 +1,4 @@
-/*! jQuery List - v0.1.1 - 2013-02-12
+/*! jQuery List - v0.1.2 - 2013-04-05
 * https://github.com/nathggns/jq-list
 * Copyright (c) 2013 Nathaniel Higgins; Licensed MIT */
 
@@ -111,6 +111,7 @@
 
           this.saveInformation(info);
 
+          // These are the sublists
           if (info.children) {
 
             var children = [];
@@ -225,6 +226,7 @@
 
         $specials.add($element.find('[data-sublist]')).each(function () {
           $(this).attr('data-index', '{{ loop.index }}');
+          $(this).attr('data-parent-identifier', '{{ item.identifier }}');
         });
 
         if (return_text) {
@@ -270,28 +272,46 @@
        * @param  {object} vars List of variables to pass to the swig template
        */
       'render': function (vars) {
-
         this.events('before_render');
 
         var info = this.getInformation();
         var children = info.children;
-
         var rows = {};
-
-
         var data = {};
+        var real_rows = info.rows;
+        var identifiers = $.map(real_rows, function(row) {
+          return row.identifier;
+        });
 
         $.each(children, function (index, child) {
-          element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-            rows[child.name + '-' + index] = $(this).list('getInformation').rows;
+          var $sublists = element.find('[data-sublist="' + child.name + '"]');
+
+          $sublists.each(function () {
+
+            var $sublist = $(this);
+            var new_list = false;
+
+            if (!$sublist.data('ran')) {
+              $sublist.list(child.element, child.options);
+            }
+
+            var row_id = identifiers.indexOf($sublist.data('parent-identifier'));
+
+            if (row_id === -1) {
+              return;
+            }
+
+            real_rows[row_id].child = {
+              rows: $sublist.list('getInformation').rows,
+              string: '[data-sublist="' + child.name + '"][data-parent-identifier="' + $sublist.data('parent-identifier') + '"]',
+              info: child
+            };
           });
         });
 
         element.find('[data-identifier]').each(function () {
           data[$(this).data('identifier')] = this;
         });
-
-        var real_rows = this.getInformation().rows;
 
         element.html(info.template($.extend(true, {}, {
           list: real_rows,
@@ -301,9 +321,7 @@
 
         this.events('render_before_fix');
 
-
         element.find('[data-role]').on('click', function (e) {
-
           var $this = $(this);
           var role = $this.data('role');
 
@@ -320,48 +338,32 @@
         });
 
         $.each(children, function (index, child) {
-
-          element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-
-            var row_name = child.name + '-' + index;
-
-            if (!rows[row_name]) {
-              rows[row_name] = [];
-            }
-
-            var $this = $(this);
-
-            $this.list(child.element, child.options);
-
-            var info = $this.list('getInformation');
-            info.render_options = {
-              owner: {
-                index: $this.data('index')
-              }
-            };
-
-            $this.list('saveInformation', info).list('render');
-
-            if (rows[row_name].length > 0) {
-              info = $this.list('getInformation');
-              info.rows = rows[row_name];
-              $this.list('saveInformation', info).list('render');
-            }
-
-
-
+          var $sublists = element.find('[data-sublist="' + child.name + '"]').filter(function() {
+            return !$(this).data('ran');
           });
+
+          $sublists.each(function() {
+            $(this).list(child.element, child.options);
+          });
+        });
+
+        $.each(real_rows, function (index, row) {
+          if (row.child) {
+            var $sublist = element.find(row.child.string);
+
+            if ($sublist.data('ran')) {
+              var info = $sublist.list('getInformation');
+              info.rows = row.child.rows;
+              $sublist.list('saveInformation', info).list('render');
+            }
+          }
         });
 
         $.each(data, function (identifier, ele) {
           var $new = element.find('[data-identifier="' + identifier + '"]');
-
           var $ele = $(ele);
 
-
           if ($new.length > 0) {
-
-
             $.each(run.attrs($new[0]), function (name, attr) {
               if (name !== 'type') {
                 $ele.attr(name, attr);
@@ -370,13 +372,13 @@
 
             $ele.insertAfter($new);
             $new.remove();
-
           }
-
         });
 
-        this.events('render');
+        info.rows = real_rows;
 
+        this.saveInformation(info);
+        this.events('render');
       },
 
       /**

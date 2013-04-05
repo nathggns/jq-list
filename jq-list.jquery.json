@@ -2,7 +2,7 @@
   "name": "jq-list",
   "title": "jQuery List",
   "description": "jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/nathggns/jq-list",
   "author": {
     "name": "Nathaniel Higgins",
