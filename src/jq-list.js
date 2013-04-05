@@ -281,18 +281,24 @@
         var children = info.children;
         var rows = {};
         var data = {};
+        var real_rows = this.getInformation().rows;
+        var identifiers = $.map(real_rows, function(row) {
+          return row.identifier;
+        });
 
         $.each(children, function (index, child) {
           element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-            rows[child.name + '-' + index] = $(this).list('getInformation').rows;
+            var $this = $(this);
+
+            if (identifiers.indexOf($this.data('parent-identifier')) === -1) return;
+
+            rows[child.name + '-' + index] = $this.list('getInformation').rows;
           });
         });
 
         element.find('[data-identifier]').each(function () {
           data[$(this).data('identifier')] = this;
         });
-
-        var real_rows = this.getInformation().rows;
 
         element.html(info.template($.extend(true, {}, {
           list: real_rows,
