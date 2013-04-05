@@ -229,6 +229,7 @@
 
         $specials.add($element.find('[data-sublist]')).each(function () {
           $(this).attr('data-index', '{{ loop.index }}');
+          $(this).attr('data-parent-identifier', '{{ item.identifier }}');
         });
 
         if (return_text) {
