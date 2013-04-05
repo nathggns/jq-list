@@ -182,14 +182,13 @@
     });
 
     $.each(tests, function(name, test_func) {
+      test(name, function() {
+        runList();
+        Array.prototype.unshift.call(arguments, $element);
+        test_func.apply(this, arguments);
 
-    test(name, function() {
-      runList();
-      Array.prototype.unshift.call(arguments, $element);
-      test_func.apply(this, arguments);
-
-      $element.list('reset');
-    });
+        $element.list('reset');
+      });
     });
   });
 })(jQuery);
