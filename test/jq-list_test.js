@@ -54,8 +54,7 @@
 
       equal($('input').eq(2).val(), 'This is some more', 'Check value after add');
     },
-    
-    
+
     'test adding': function($element) {
       // Because references don't last :/
       var button = function() { return $element.find('> li:first-of-type > div [data-role=add]'); };
@@ -188,7 +187,7 @@
       runList();
       Array.prototype.unshift.call(arguments, $element);
       test_func.apply(this, arguments);
-      
+
       $element.list('reset');
     });
     });
