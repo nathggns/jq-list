@@ -115,6 +115,7 @@
 
           this.saveInformation(info);
 
+          // These are the sublists
           if (info.children) {
 
             var children = [];
@@ -281,18 +282,32 @@
         var children = info.children;
         var rows = {};
         var data = {};
-        var real_rows = this.getInformation().rows;
+        var real_rows = info.rows;
         var identifiers = $.map(real_rows, function(row) {
           return row.identifier;
         });
 
         $.each(children, function (index, child) {
-          element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-            var $this = $(this);
+          var $sublists = element.find('[data-sublist="' + child.name + '"]');
 
-            if (identifiers.indexOf($this.data('parent-identifier')) === -1) return;
+          $sublists.each(function () {
 
-            rows[child.name + '-' + index] = $this.list('getInformation').rows;
+            var $sublist = $(this);
+            var new_list = false;
+
+            if (!$sublist.data('ran')) {
+              $sublist.list(child.element, child.options);
+            }
+
+            var row_id = identifiers.indexOf($sublist.data('parent-identifier'));
+
+            if (row_id === -1) return;
+
+            real_rows[row_id].child = {
+              rows: $sublist.list('getInformation').rows,
+              string: '[data-sublist="' + child.name + '"][data-parent-identifier="' + $sublist.data('parent-identifier') + '"]',
+              info: child
+            };
           });
         });
 
@@ -325,32 +340,25 @@
         });
 
         $.each(children, function (index, child) {
-          element.find('[data-sublist="' + child.name + '"]').each(function (index) {
-            var row_name = child.name + '-' + index;
-
-            if (!rows[row_name]) {
-              rows[row_name] = [];
-            }
-
-            var $this = $(this);
-
-            $this.list(child.element, child.options);
-
-            var info = $this.list('getInformation');
-            info.render_options = {
-              owner: {
-                index: $this.data('index')
-              }
-            };
-
-            $this.list('saveInformation', info).list('render');
-
-            if (rows[row_name].length > 0) {
-              info = $this.list('getInformation');
-              info.rows = rows[row_name];
-              $this.list('saveInformation', info).list('render');
-            }
+          var $sublists = element.find('[data-sublist="' + child.name + '"]').filter(function() {
+            return !$(this).data('ran');
           });
+
+          $sublists.each(function() {
+            $(this).list(child.element, child.options);
+          });
+        });
+
+        $.each(real_rows, function (index, row) {
+          if (row.child) {
+            var $sublist = element.find(row.child.string);
+
+            if ($sublist.data('ran')) {
+              var info = $sublist.list('getInformation');
+              info.rows = row.child.rows;
+              $sublist.list('saveInformation', info).list('render');
+            }
+          }
         });
 
         $.each(data, function (identifier, ele) {
@@ -369,6 +377,9 @@
           }
         });
 
+        info.rows = real_rows;
+
+        this.saveInformation(info);
         this.events('render');
       },
 
