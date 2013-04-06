@@ -185,8 +185,16 @@
     equal($element.html(), html, 'HTML was fixed');
     });
 
-    $.each(tests, function(name, test_func) {
-      test(name, function() {
+    $.each(tests, function(name, test_obj) {
+
+      if (typeof test_obj === 'function') {
+        test_obj = {
+          test: test_obj,
+          func: test
+        };
+      }
+
+      test_obj.func(name, function() {
         runList();
         Array.prototype.unshift.call(arguments, $element);
         test_func.apply(this, arguments);
