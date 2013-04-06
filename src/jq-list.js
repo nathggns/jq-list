@@ -1,11 +1,3 @@
-/*
- * jq-list
- * https://github.com/nathggns/jq-list
- *
- * Copyright (c) 2013 Nathaniel Higgins
- * Licensed under the MIT license.
- */
-
 (function (window, document, $, swig, undefined) {
 
   'use strict';
@@ -453,6 +445,14 @@
             $.each(info.events[event_name], function () {
               this.apply(element, args);
             });
+          }
+
+          if (info) {
+            $.each(info.events[event_name] || [], function() {
+              this.apply(element, args);
+            });
+
+            element.trigger('list-' + event_name, args);
           }
         }
       },

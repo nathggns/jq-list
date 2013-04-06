@@ -1,6 +1,30 @@
 {
   "name": "jq-list",
-  "version": "0.1.4",
+  "version": "0.2.0",
+  "title": "jQuery List",
+  "description": "jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable",
+  "homepage": "https://github.com/nathggns/jq-list",
+  "author": {
+    "name": "Nathaniel Higgins",
+    "email": "nat@nath.is",
+    "url": "http://nath.is"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nathggns/jq-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nathggns/jq-list/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nathggns/jq-list/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
   "engines": {
     "node": ">= 0.6.0"
   },
@@ -8,6 +32,11 @@
     "test": "grunt qunit"
   },
   "devDependencies": {
-    "grunt": "~0.3.17"
+    "grunt": "0.4.x",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.0",
+    "grunt-contrib-qunit": "~0.2.1",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-concat": "~0.1.3"
   }
 }

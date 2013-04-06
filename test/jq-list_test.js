@@ -164,6 +164,29 @@
       equal($element.find('> li:first-child > input').val(), fourth, 'Fourth val');
       equal($element.find('> li:first-child [data-sublist]').children().length, 1, 'child length after delete');
       equal($element.find('> li:first-child [data-sublist]').children().eq(0).find('input').val(), fifth, 'Fifth val after delete');
+    },
+
+    'events are triggered': {
+      test: function($element) {
+
+
+        var timer = setTimeout(function() {
+          start();
+          ok(false, 'It failed');
+        }, 1000);
+
+        $element.on('list-add', function() {
+          clearTimeout(timer);
+          ok(true, 'Event triggered');
+          equal(arguments.length, 2, 'Argument length is correct');
+          equal(arguments[1], 0, 'Index is correct');
+
+          start();
+        });
+
+        $element.find('> li > .buttons [data-role=add]').click();
+      },
+      func: asyncTest
     }
   };
 
@@ -185,11 +208,19 @@
     equal($element.html(), html, 'HTML was fixed');
     });
 
-    $.each(tests, function(name, test_func) {
-      test(name, function() {
+    $.each(tests, function(name, test_obj) {
+
+      if (typeof test_obj === 'function') {
+        test_obj = {
+          test: test_obj,
+          func: test
+        };
+      }
+
+      test_obj.func(name, function() {
         runList();
         Array.prototype.unshift.call(arguments, $element);
-        test_func.apply(this, arguments);
+        test_obj.test.apply(this, arguments);
 
         $element.list('reset');
       });
