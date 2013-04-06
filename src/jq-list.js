@@ -454,6 +454,14 @@
               this.apply(element, args);
             });
           }
+
+          if (info) {
+            $.each(info.events[event_name] || [], function() {
+              this.apply(element, args);
+            });
+
+            element.trigger('list-' + event_name, args);
+          }
         }
       },
 
