@@ -1,7 +1,9 @@
-/*! jQuery List - v0.1.4 - 2013-04-05
-* https://github.com/nathggns/jq-list
-* Copyright (c) 2013 Nathaniel Higgins; Licensed MIT */
-
+/*!
+ * jQuery List v0.2.0
+ * https://github.com/nathggns/jq-list
+ * Copyright (c) 2013 Nathaniel Higgins; Licensed MIT
+ * Built on 2013-04-06 
+ */
 (function (window, document, $, swig, undefined) {
 
   'use strict';
@@ -449,6 +451,14 @@
             $.each(info.events[event_name], function () {
               this.apply(element, args);
             });
+          }
+
+          if (info) {
+            $.each(info.events[event_name] || [], function() {
+              this.apply(element, args);
+            });
+
+            element.trigger('list-' + event_name, args);
           }
         }
       },
