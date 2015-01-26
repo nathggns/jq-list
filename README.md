@@ -1,4 +1,6 @@
-# jQuery List
+# jQuery List (DEPRECATED)
+
+**This plugin is deprecated and should not be used for new projects under any circumstances. Please look into using projects like React and/or angular**
 
 jQuery List is a jQuery plugin that allows you to create lists using Swig templates. It has great event hooking, and is extremely configurable.
 
